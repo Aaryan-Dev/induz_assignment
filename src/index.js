@@ -1,18 +1,19 @@
 import { Buffer } from 'buffer';
-import crypto from 'crypto-browserify';
-
 // Make Buffer globally available
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+     <GoogleOAuthProvider clientId="397142317069-o32mssvgtocoitbisp94qbg4rmm50mua.apps.googleusercontent.com">
+       <App />
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );
 

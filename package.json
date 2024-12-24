@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "base32-decode": "^1.0.0",
     "buffer": "^6.0.3",
     "cra-template": "1.2.0",
     "crypto-browserify": "^3.12.1",
     "formik": "^2.4.6",
+    "jwt-decode": "^4.0.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-app-rewired": "^2.2.1",

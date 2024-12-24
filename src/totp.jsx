@@ -7,16 +7,16 @@ const speakeasy = require('speakeasy');
 // Generate a TOTP secret
 const secret = speakeasy.generateSecret({ length: 20 });
 
-console.log('Secret:', secret.base32); // Save this in your database
-console.log('QR Code URL:', secret.otpauth_url); // Use this for QR code generation
+console.log('Secret:', secret.base32);
+console.log('QR Code URL:', secret.otpauth_url);
 
 const onLogin = (token) => {
   const decodedSecret = Buffer.from(base32Decode(secret.base32, 'RFC4648'));
 
   const verified = speakeasy.totp.verify({
-    secret: decodedSecret, // Fetch this from your database
+    secret: decodedSecret,
     encoding: 'base32',
-    token: token, // Code entered by the user
+    token: token, 
   });
   
   if (verified) {

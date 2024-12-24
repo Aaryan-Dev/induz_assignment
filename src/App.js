@@ -4,12 +4,15 @@ import * as Yup from 'yup';
 import Modal from 'react-modal';
 import { useState } from 'react';
 import { QRCodeDisplay, TOTPLogin } from './totp';
+import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isQrModalOpen, setIsQrModalOpen] = useState(false)
   const [qrEmail, setQrEmail] = useState('')
-
+  const [decoded, setDecoded] = useState({})
+  
   const initialValues = {
     email: '',
     password: '',
@@ -18,6 +21,17 @@ function App() {
     mobile_number: '',
     verify_password: '',
   }
+
+  const handleLoginSuccess = (credentialResponse) => {
+    console.log('Login Success:', credentialResponse);
+    const decodedToken = jwtDecode(credentialResponse.credential);
+    console.log('Decoded User Info:', decodedToken);
+    setDecoded(decodedToken)
+  };
+
+  const handleLoginFailure = (error) => {
+    alert('Login Failed:', error);
+  };
 
   const customStyles = {
     overlay: {
@@ -75,6 +89,13 @@ function App() {
   const hanldleQrLogin = () => {
     setQrEmail(formik?.values?.email)
   }
+
+  const handleLogout = () => {
+    googleLogout(); 
+    setDecoded(null);  
+    console.log('User logged out');
+  };
+
 
   return (
     <div className="App">
@@ -186,11 +207,29 @@ function App() {
       </div>
       </div>
       </Modal>
+
+
+      <div style={{padding: '0px'}} className='SignUp'>
+      <GoogleLogin
+        onSuccess={handleLoginSuccess}
+        onError={handleLoginFailure}
+      />
+    </div>
+ 
+    { decoded?.name &&
+
+    <div style={{margin: 'auto', textAlign: 'center'}}>
+      <span>{decoded?.name}</span>
+      <br></br>
+      <img style={{width: '100%'}} src={decoded?.picture}></img>
+      <button onClick={handleLogout}>Log out</button>
+    </div>
+    }
+
     </div>
   );
 }
 
 export default App;
-
 
 
