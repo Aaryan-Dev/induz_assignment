@@ -1,0 +1,114 @@
+.App {
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+
+  .SignUp{
+    margin: auto;
+    width: 10rem;
+    text-decoration: none;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #6a2e91;
+  }
+  
+}
+
+img{
+  margin: auto;
+  height: 3rem;
+  width: 10rem;
+}
+
+button{
+  cursor: pointer;
+}
+
+.Signupform {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  padding: 0.2rem;
+
+  .form-error{
+    color: red;
+    font-size: 8px;
+    min-height: 0.5rem;
+    display: inline;
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.CustomReactModal {
+	position: relative;
+	padding-top: 1.5rem;
+
+	.CustomReactModal__Close {
+		position: absolute;
+		top: -4px;
+		right: -8px;
+    cursor: pointer;
+		background: none;
+		border: none;
+		background-color: transparent;
+		padding: 2px;
+		border-radius: var(--border-radius-md);
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: #f0f0f0;
+
+			svg {
+				color: var(--secondary-color-light);
+			}
+		}
+
+		svg {
+			height: 1.375rem;
+			width: 1.375rem;
+			color: var(--secondary-color-lightest);
+			transition: color 0.2s;
+		}
+	}
+}
+
