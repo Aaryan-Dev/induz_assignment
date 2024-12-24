@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { QRCodeDisplay, TOTPLogin } from './totp';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import induz from './induz3.png'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -99,7 +100,7 @@ function App() {
 
   return (
     <div className="App">
-      <img src='https://induz.io/assets/img/induz3.png'></img>
+      <img src={induz}></img>
       <button className='SignUp' onClick={handleModal}>Sign up via email </button>
 
       <button className='SignUp' onClick={handleQrModal}>Sign up via QR</button>
