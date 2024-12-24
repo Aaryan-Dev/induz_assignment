@@ -5,7 +5,8 @@
 
   .SignUp{
     margin: auto;
-    width: 10rem;
+    width: 15rem;
+    margin-top: 1rem;
     text-decoration: none;
     color: white;
     border: none;
@@ -13,7 +14,10 @@
     padding: 0.5rem;
     background-color: #6a2e91;
   }
-  
+
+  .QRCodeDisplay{
+    margin: auto;
+  }
 }
 
 img{
@@ -32,15 +36,15 @@ button{
   width: 50vw;
   padding: 0.2rem;
 
-  .form-error{
-    color: red;
-    font-size: 8px;
-    min-height: 0.5rem;
-    display: inline;
-    margin-bottom: 0.5rem;
-  }
 }
 
+.form-error{
+  color: red;
+  font-size: 8px;
+  min-height: 0.5rem;
+  display: inline;
+  margin-bottom: 0.5rem;
+}
 
 
 
@@ -82,33 +86,34 @@ button{
 .CustomReactModal {
 	position: relative;
 	padding-top: 1.5rem;
+}
 
-	.CustomReactModal__Close {
-		position: absolute;
-		top: -4px;
-		right: -8px;
-    cursor: pointer;
-		background: none;
-		border: none;
-		background-color: transparent;
-		padding: 2px;
-		border-radius: var(--border-radius-md);
-		transition: background-color 0.2s;
 
-		&:hover {
-			background-color: #f0f0f0;
+.CustomReactModal__Close {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  background-color: transparent;
+  padding: 2px;
+  border-radius: var(--border-radius-md);
+  transition: background-color 0.2s;
 
-			svg {
-				color: var(--secondary-color-light);
-			}
-		}
+  &:hover {
+    background-color: #f0f0f0;
 
-		svg {
-			height: 1.375rem;
-			width: 1.375rem;
-			color: var(--secondary-color-lightest);
-			transition: color 0.2s;
-		}
-	}
+    svg {
+      color: var(--secondary-color-light);
+    }
+  }
+
+  svg {
+    height: 1.375rem;
+    width: 1.375rem;
+    color: var(--secondary-color-lightest);
+    transition: color 0.2s;
+  }
 }
 

@@ -3,10 +3,12 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'react-modal';
 import { useState } from 'react';
+import { QRCodeDisplay, TOTPLogin } from './totp';
 
 function App() {
-
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false)
+  const [qrEmail, setQrEmail] = useState('')
 
   const initialValues = {
     email: '',
@@ -36,8 +38,7 @@ function App() {
   };
 
   const onSubmit = () => {
-    console.log('onSubmit', formik)
-    alert(`${formik?.values?.email} ${formik?.values?.first_name} ${formik?.values?.last_name} ${formik?.values?.mobile_number}`)
+    alert(`You are now signed up ${formik?.values?.email} ${formik?.values?.first_name} ${formik?.values?.last_name} ${formik?.values?.mobile_number}`)
   }
 
   const validationSchema = Yup.object({
@@ -67,19 +68,27 @@ function App() {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleQrModal = () => {
+    setIsQrModalOpen(!isQrModalOpen);
+  };
+
+  const hanldleQrLogin = () => {
+    setQrEmail(formik?.values?.email)
+  }
+
   return (
     <div className="App">
-
       <img src='https://induz.io/assets/img/induz3.png'></img>
+      <button className='SignUp' onClick={handleModal}>Sign up via email </button>
 
-      <button className='SignUp' onClick={handleModal}> Proceed with sign up </button>
+      <button className='SignUp' onClick={handleQrModal}>Sign up via QR</button>
+
       <Modal
         isOpen={isModalOpen}
         onRequestClose={handleModal}
         style={customStyles}
         role='dialog'
       >
-
         <div className='CustomReactModal'>
           <button
             className='CustomReactModal__Close'
@@ -133,6 +142,50 @@ function App() {
         </div>
       </Modal>
 
+
+      <Modal
+        isOpen={isQrModalOpen}
+        onRequestClose={handleQrModal}
+        style={customStyles}
+        role='dialog'
+      >
+      <div className='CustomReactModal'>
+         <button
+            className='CustomReactModal__Close'
+            type='button'
+            onClick={handleModal}
+            title='close'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='icon icon-close'
+              width='44'
+              height='44'
+              viewBox='0 0 24 24'
+              strokeWidth='1.5'
+              stroke='currentColor'
+              fill='none'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            >
+              <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+              <line x1='18' y1='6' x2='6' y2='18' />
+              <line x1='6' y1='6' x2='18' y2='18' />
+            </svg>
+          </button>
+
+
+      <div className='QRCodeDisplay'>
+        <input style={{width: '30vw', marginRight: '1rem'}} onChange={(e) => handleInput('email', e)} type='email' placeholder='Please provide your email address' value={formik.values.email}></input>
+        <button disabled={ formik.errors?.email} onClick={() => hanldleQrLogin()}>Enter</button>
+        <br></br>
+        {<span className='form-error'>{formik.touched?.email && formik.errors?.email && formik.errors?.email}</span>}
+        {qrEmail && <QRCodeDisplay email={qrEmail}/>}
+         <br></br>
+        {qrEmail && <TOTPLogin/>}
+      </div>
+      </div>
+      </Modal>
     </div>
   );
 }
