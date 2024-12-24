@@ -153,7 +153,7 @@ function App() {
          <button
             className='CustomReactModal__Close'
             type='button'
-            onClick={hanldleQrLogin}
+            onClick={handleQrModal}
             title='close'
           >
             <svg
