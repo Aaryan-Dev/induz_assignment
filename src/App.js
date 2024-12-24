@@ -210,7 +210,7 @@ function App() {
       </Modal>
 
 
-      <div className='SignUp'>
+      <div style={{display: 'flex', justifyContent: 'center'}} className='SignUp'>
       <GoogleLogin
         onSuccess={handleLoginSuccess}
         onError={handleLoginFailure}
