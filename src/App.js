@@ -19,10 +19,13 @@ function App() {
   const [currentPage, setCurrentpage] = useState(0);
 
   const handleSearch = (query) => {
+    console.log(query)
     const lowerCaseQuery = query.toLowerCase();
     const results = dataEmp.filter((employee) =>
       employee.name.toLowerCase().includes(lowerCaseQuery)
     );
+
+    // console.log('results', results, results.slice(currentPage, currentPage + 10))
 
     setDisplayData(results.slice(currentPage, currentPage + 10))
     setSearchData(results)
@@ -33,6 +36,7 @@ function App() {
 
   const handleInputChange = (event) => {
 
+    setCurrentpage(0)
     const query = event.target.value;
     debouncedSearch(query);
   };
@@ -411,7 +415,7 @@ function App() {
             <tr>
               <td className="empData">
                 {" "}
-                <img
+                <img style={{width: '100px', height: '100px'}}
                   src={require(`./employees_data/${el?.profile_picture}`)}
                 ></img>{" "}
               </td>
