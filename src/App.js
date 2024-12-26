@@ -395,10 +395,10 @@ function App() {
       <br></br>
 
 
-     <input onChange={handleInputChange} style={{ width: "73vw", margin: 'auto' }} placeholder="Search Employee's name"></input>
+     <input onChange={handleInputChange} style={{ width: "90vw", margin: 'auto' }} placeholder="Search Employee's name"></input>
       <br></br>
 
-      <table style={{ width: "60vw", margin: "auto" }}>
+      <table style={{ width: "90vw", margin: "auto" }}>
         <tr>
           <th className="empHeader">Image</th>
           <th className="empHeader">Id</th>
@@ -415,7 +415,7 @@ function App() {
             <tr>
               <td className="empData">
                 {" "}
-                <img style={{width: '100px', height: '100px'}}
+                <img style={{width: '50px', height: '50px'}}
                   src={require(`./employees_data/${el?.profile_picture}`)}
                 ></img>{" "}
               </td>
