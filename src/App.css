@@ -7,6 +7,7 @@
     margin: auto;
     width: 15rem;
     margin-top: 1rem;
+    margin-left: 1rem;
     text-decoration: none;
     color: white;
     border: none;
@@ -17,7 +18,45 @@
 
   .QRCodeDisplay{
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
+}
+
+.empHeader{
+  border: 3px solid black;
+}
+
+.emptable{
+  margin: auto;
+  width: 100vw;
+  border: 1px solid black;
+  margin: 1rem;
+}
+
+
+.empData{
+  border: 1px solid black;
+  text-align: center;
+
+}
+
+
+
+.description{
+  display: flex;
+   flex-direction: column;
+   padding: 1rem;
+}
+
+
+.EmpData{
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin: 1rem;
 }
 
 img{
@@ -27,6 +66,7 @@ img{
 }
 
 button{
+  /* margin: 1px; */
   cursor: pointer;
 }
 
