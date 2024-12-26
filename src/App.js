@@ -15,6 +15,7 @@ function App() {
   const [qrEmail, setQrEmail] = useState("");
   const [decoded, setDecoded] = useState({});
   const [displayData, setDisplayData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
   const [currentPage, setCurrentpage] = useState(0);
 
   const handleSearch = (query) => {
@@ -23,7 +24,9 @@ function App() {
       employee.name.toLowerCase().includes(lowerCaseQuery)
     );
 
-    setDisplayData(results.slice(currentPage, currentPage + 10));
+    setDisplayData(results.slice(currentPage, currentPage + 10))
+    setSearchData(results)
+
   };
 
   const debouncedSearch = debounce(handleSearch, 300);
@@ -149,8 +152,16 @@ function App() {
     setCurrentpage(() => currentPage + 10);
   };
 
+
   useEffect(() => {
-    setDisplayData(dataEmp.slice(currentPage, currentPage + 10));
+
+    if (searchData?.length) {
+      setDisplayData(searchData.slice(currentPage, currentPage + 10));
+
+    } else{
+      setDisplayData(dataEmp.slice(currentPage, currentPage + 10));
+    }
+
   }, [currentPage]);
 
   // if(displayData?.length === 0) {
@@ -415,7 +426,7 @@ function App() {
           );
         })}
 
-        {displayData?.length === 0 && <h3>No records found!</h3> } 
+        {displayData?.length === 0 && searchData?.length ===0  && <h3>No records found!</h3> } 
 
 
       </table>
